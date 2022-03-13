@@ -78,10 +78,10 @@ namespace StiMole
             {
                 Tree root = MTree.MakeTree(Path); 
                 root.resetCounter();
-                //foreach (Tree item in root.children)
-                //{
-                //     item.NotFound();
-                //}
+                foreach (Tree item in root.children)
+                {
+                     item.Found();
+                }
                 drawTree(root);
             }
         }

@@ -4,14 +4,14 @@ namespace StiMole
 {
     internal class DFS
     {
-        public static void DFSAll(string path, Tree treeOut, List<string> pathOut)
+        public static Tree DFSall(string Path, string Target, List<string> pathOut)
         {
-
+            return new Tree(Path);
         }
 
-        public static void DFSNOTALL(string path, Tree treeOut, List<string> pathOut)
+        public static Tree DFSNOTALL(string path, string Target,List<string> pathOut)
         {
-
+            return new Tree(path);
         }
     }
 }
