@@ -76,12 +76,12 @@ namespace StiMole
         {
             if (openedFile)
             {
-                Tree root = MTree.MakeTree(Path); 
+                //ini terakhir kali nopal edit buat nyelesain DFS, kalau mau nyoba, tinggal set targetnya sama pilih search all ato ngga
+                string Target = "BruteForce.java";
+                bool searchAll = false;
+                List<string> pathOut = new List<string>();
+                Tree root = DFS.Search(Path, Target, pathOut, searchAll);      
                 root.resetCounter();
-                foreach (Tree item in root.children)
-                {
-                     item.Found();
-                }
                 drawTree(root);
             }
         }

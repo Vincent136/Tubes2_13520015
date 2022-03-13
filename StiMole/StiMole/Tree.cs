@@ -40,6 +40,17 @@ namespace StiMole
             id = counter;
             children = new LinkedList<Tree>();
         }
+        public Tree(string Path, Warna warna)
+        {
+            string[] pathSplit = Path.Split('\\');
+            this.FileName = pathSplit.Last();
+            this.Path = Path;
+            this.warna = warna;
+            parent = null;
+            counter++;
+            id = counter;
+            children = new LinkedList<Tree>();
+        }
 
         public Tree(string Path, Tree parent)
         {
@@ -47,6 +58,17 @@ namespace StiMole
             this.FileName = pathSplit.Last();
             this.Path = Path;
             warna = Warna.Hitam;
+            this.parent = parent;
+            counter++;
+            id = counter;
+            children = new LinkedList<Tree>();
+        }
+        public Tree(string Path, Tree parent, Warna warna)
+        {
+            string[] pathSplit = Path.Split('\\');
+            this.FileName = pathSplit.Last();
+            this.Path = Path;
+            this.warna = warna;
             this.parent = parent;
             counter++;
             id = counter;
