@@ -73,3 +73,28 @@ D:\ProjectKuliah\Stima\Tubes2\Tubes2_13520015\StiMole\StiMole\obj\Debug\StiMole.
 D:\ProjectKuliah\Stima\Tubes2\Tubes2_13520015\StiMole\StiMole\obj\Debug\StiMole.csproj.CopyComplete
 D:\ProjectKuliah\Stima\Tubes2\Tubes2_13520015\StiMole\StiMole\obj\Debug\StiMole.exe
 D:\ProjectKuliah\Stima\Tubes2\Tubes2_13520015\StiMole\StiMole\obj\Debug\StiMole.pdb
+E:\Tugas Itb\Sem 4\Stima\Tubes\Tubes2_13520015\StiMole\StiMole\obj\Debug\StiMole.csproj.AssemblyReference.cache
+E:\Tugas Itb\Sem 4\Stima\Tubes\Tubes2_13520015\StiMole\StiMole\obj\Debug\StiMole.csproj.SuggestedBindingRedirects.cache
+E:\Tugas Itb\Sem 4\Stima\Tubes\Tubes2_13520015\StiMole\StiMole\obj\Debug\StiMole.Form1.resources
+E:\Tugas Itb\Sem 4\Stima\Tubes\Tubes2_13520015\StiMole\StiMole\obj\Debug\StiMole.Properties.Resources.resources
+E:\Tugas Itb\Sem 4\Stima\Tubes\Tubes2_13520015\StiMole\StiMole\obj\Debug\StiMole.csproj.GenerateResource.cache
+E:\Tugas Itb\Sem 4\Stima\Tubes\Tubes2_13520015\StiMole\StiMole\obj\Debug\StiMole.csproj.CoreCompileInputs.cache
+E:\Tugas Itb\Sem 4\Stima\Tubes\Tubes2_13520015\StiMole\StiMole\obj\Debug\StiMole.exe
+E:\Tugas Itb\Sem 4\Stima\Tubes\Tubes2_13520015\StiMole\StiMole\obj\Debug\StiMole.pdb
+E:\Tugas Itb\Sem 4\Stima\Tubes\Tubes2_13520015\StiMole\StiMole\bin\Debug\StiMole.exe.config
+E:\Tugas Itb\Sem 4\Stima\Tubes\Tubes2_13520015\StiMole\StiMole\bin\Debug\StiMole.exe
+E:\Tugas Itb\Sem 4\Stima\Tubes\Tubes2_13520015\StiMole\StiMole\bin\Debug\StiMole.pdb
+E:\Tugas Itb\Sem 4\Stima\Tubes\Tubes2_13520015\StiMole\StiMole\bin\Debug\AutomaticGraphLayout.dll
+E:\Tugas Itb\Sem 4\Stima\Tubes\Tubes2_13520015\StiMole\StiMole\bin\Debug\AutomaticGraphLayout.Drawing.dll
+E:\Tugas Itb\Sem 4\Stima\Tubes\Tubes2_13520015\StiMole\StiMole\bin\Debug\Microsoft.Msagl.GraphViewerGdi.dll
+E:\Tugas Itb\Sem 4\Stima\Tubes\Tubes2_13520015\StiMole\StiMole\bin\Debug\Microsoft.Msagl.WpfGraphControl.dll
+E:\Tugas Itb\Sem 4\Stima\Tubes\Tubes2_13520015\StiMole\StiMole\bin\Debug\Microsoft.WindowsAPICodePack.dll
+E:\Tugas Itb\Sem 4\Stima\Tubes\Tubes2_13520015\StiMole\StiMole\bin\Debug\Microsoft.WindowsAPICodePack.Shell.dll
+E:\Tugas Itb\Sem 4\Stima\Tubes\Tubes2_13520015\StiMole\StiMole\bin\Debug\Microsoft.WindowsAPICodePack.ShellExtensions.dll
+E:\Tugas Itb\Sem 4\Stima\Tubes\Tubes2_13520015\StiMole\StiMole\bin\Debug\Microsoft.WindowsAPICodePack.pdb
+E:\Tugas Itb\Sem 4\Stima\Tubes\Tubes2_13520015\StiMole\StiMole\bin\Debug\Microsoft.WindowsAPICodePack.xml
+E:\Tugas Itb\Sem 4\Stima\Tubes\Tubes2_13520015\StiMole\StiMole\bin\Debug\Microsoft.WindowsAPICodePack.Shell.pdb
+E:\Tugas Itb\Sem 4\Stima\Tubes\Tubes2_13520015\StiMole\StiMole\bin\Debug\Microsoft.WindowsAPICodePack.Shell.xml
+E:\Tugas Itb\Sem 4\Stima\Tubes\Tubes2_13520015\StiMole\StiMole\bin\Debug\Microsoft.WindowsAPICodePack.ShellExtensions.pdb
+E:\Tugas Itb\Sem 4\Stima\Tubes\Tubes2_13520015\StiMole\StiMole\bin\Debug\Microsoft.WindowsAPICodePack.ShellExtensions.xml
+E:\Tugas Itb\Sem 4\Stima\Tubes\Tubes2_13520015\StiMole\StiMole\obj\Debug\StiMole.csproj.CopyComplete

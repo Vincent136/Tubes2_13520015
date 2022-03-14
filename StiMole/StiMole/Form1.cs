@@ -77,10 +77,12 @@ namespace StiMole
             if (openedFile)
             {
                 //ini terakhir kali nopal edit buat nyelesain DFS, kalau mau nyoba, tinggal set targetnya sama pilih search all ato ngga
-                string Target = "BruteForce.java";
+                string Target = "gay.txt";
                 bool searchAll = false;
                 List<string> pathOut = new List<string>();
-                Tree root = DFS.Search(Path, Target, pathOut, searchAll);      
+                //Tree root = DFS.Search(Path, Target, pathOut, searchAll);
+                //Tree root = BFS.BFSAll(Path, Target, pathOut); 
+                Tree root = BFS.BFSNOTALL(Path, Target, pathOut, true);
                 root.resetCounter();
                 drawTree(root);
             }
