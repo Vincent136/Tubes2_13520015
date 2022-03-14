@@ -17,7 +17,7 @@ namespace StiMole
 {
     public partial class Form1 : Form
     {   
-        Tree BFSAll(string path,string Target, List<string> pathOut)
+        private async Task<Tree> BFSAll(string path,string Target, List<string> pathOut, Graph graph)
         {   
             Queue<Tree> queue = new Queue<Tree>();
             Tree root = MTree.MakeTree(path);
@@ -37,21 +37,25 @@ namespace StiMole
                 {
                     Current.Found();
                     pathOut.Add(Current.FileName); //Temp
-                    DFS.Color(Current);
+                    ColorParent(Current, graph);
+                    await Task.Delay(100);
                 }
                 else
                 {
                     Current.NotFound();
+                    if (Current.parent != null)
+                    {
+                        Color(Current, graph);
+                        await Task.Delay(100);
+                    }
                 }
             }
-
-
             return root;
         }
 
-        
-      
-        private async void BFSNOTALL(string path,string Target, List<string> pathOut,bool isFolder, Graph graph)
+
+
+        private async Task<Tree> BFSNOTALL(string path,string Target, List<string> pathOut,bool isFolder, Graph graph)
         {   
             Tree root = new Tree(path);
             if(isFolder){ 
@@ -68,8 +72,7 @@ namespace StiMole
                         pathOut.Add(Current.Path); //Temp
                         ColorParent(Current, graph);
                         await Task.Delay(100);
-                        ;
-                        return;
+                        return root;
                     }
                     else
                     {
@@ -109,6 +112,7 @@ namespace StiMole
 
                 }
             }
+            return root;
         }
 
         private void Color (Tree Current, Graph graph)
@@ -125,16 +129,14 @@ namespace StiMole
             if (Current.warna == Warna.Hitam)
             {
                 graph.AddEdge(Current.parent.id.ToString() + "\n" + Current.parent.FileName, Current.id.ToString() + "\n" + Current.FileName).Attr.Color = Microsoft.Msagl.Drawing.Color.Black;
-                gViewer1.Graph = graph;
             } else if (Current.warna == Warna.Merah)
             {
                 graph.AddEdge(Current.parent.id.ToString() + "\n" + Current.parent.FileName, Current.id.ToString() + "\n" + Current.FileName).Attr.Color = Microsoft.Msagl.Drawing.Color.Red;
-                gViewer1.Graph = graph;
             } else if (Current.warna == Warna.Biru)
             {
                 graph.AddEdge(Current.parent.id.ToString() + "\n" + Current.parent.FileName, Current.id.ToString() + "\n" + Current.FileName).Attr.Color = Microsoft.Msagl.Drawing.Color.Blue;
-                gViewer1.Graph = graph;
             }
+            gViewer1.Graph = graph;
         }
 
         private void ColorParent (Tree Current, Graph graph)

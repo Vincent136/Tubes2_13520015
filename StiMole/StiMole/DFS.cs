@@ -1,16 +1,27 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
+using System.Drawing;
 using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Windows;
+using System.Windows.Forms;
+using System.IO;
+using Microsoft.WindowsAPICodePack.Dialogs;
+using Microsoft.Msagl.Drawing;
 
 namespace StiMole
 {
-    internal class DFS
+    partial class Form1 : Form
     {
         //Path: starting path, Target: file name, pathOut: all the path that leads to the file, searchAll: set to true to search all instances
-        public static Tree Search(string Path, string Target, List<string> pathOut, bool searchAll)
+        private async Task<Tree> Search(string Path, string Target, List<string> pathOut, bool searchAll, Graph graph)
         {
             if(searchAll)
             {
-                return DFSall(Path, Target, pathOut, null, true);
+                return await DFSall(Path, Target, pathOut, null, true, graph);
             }
             else
 	{
@@ -19,10 +30,10 @@ namespace StiMole
             {
                 List<bool> found = new List<bool>();
                 found.Add(false);
-                return DFSNOTALL(Path, Target, pathOut, null, true, found);
+                return await DFSNOTALL(Path, Target, pathOut, null, true, found, graph);
             }
         }
-        public static Tree DFSall(string Path, string Target, List<string> pathOut, Tree parent, bool isFolder)
+        private async Task<Tree> DFSall(string Path, string Target, List<string> pathOut, Tree parent, bool isFolder,Graph graph)
         {
             if (isFolder)
             {
@@ -30,21 +41,32 @@ namespace StiMole
                 string[] Files = ReadDirectory.FilesInDirectory(Path);
 
                 Tree root = new Tree(Path, parent, Warna.Merah);
+                if (root.parent != null)
+                {
+                    Color(root, graph);
+                    await Task.Delay(100);
+                }
 
                 if (Files != null)
                 {
                     foreach (string file in Files)
                     {
-                        Tree child = DFSall(file, Target, pathOut, root, false);
+                        Task<Tree> tchild = DFSall(file, Target, pathOut, root, false, graph);
+                        Tree child = await tchild;
                         root.AddChild(child);
+                        Color(child, graph);
+                        await Task.Delay(100);
                     }
                 }
                 if (Folders != null)
                 {
                     foreach (string folder in Folders)
                     {
-                        Tree child = DFSall(folder, Target, pathOut, root, true);
+                        Task<Tree> tchild = DFSall(folder, Target, pathOut, root, true, graph);
+                        Tree child = await tchild;
                         root.AddChild(child);
+                        Color(child, graph);
+                        await Task.Delay(100);
                     }
                 }
                 return root;
@@ -54,22 +76,15 @@ namespace StiMole
                 Tree root = new Tree(Path, parent, Warna.Merah);
                 if(root.FileName == Target)
                 {
-                    Color(root);
+                    ColorParent(root, graph);
+                    await Task.Delay(100);
                     pathOut.Add(Path);
                 }
                 return root;
             }
         }
-        public static void Color(Tree root)
-        {
-            root.Found();
-            if(root.parent != null)
-            {
-                Color(root.parent);
-            }
-        }
 
-        public static Tree DFSNOTALL(string Path, string Target, List<string> pathOut, Tree parent, bool isFolder, List<bool> found)
+        private async Task<Tree> DFSNOTALL(string Path, string Target, List<string> pathOut, Tree parent, bool isFolder, List<bool> found, Graph graph)
         {
 
             if (isFolder)
@@ -78,6 +93,11 @@ namespace StiMole
                 string[] Files = ReadDirectory.FilesInDirectory(Path);
 
                 Tree root = new Tree(Path, parent, Warna.Merah);
+                if (root.parent != null)
+                {
+                    Color(root, graph);
+                    await Task.Delay(100);
+                }
 
                 if (Files != null)
                 {
@@ -85,8 +105,11 @@ namespace StiMole
                     {
                         if (!found[0])
                         {
-                            Tree child = DFSNOTALL(file, Target, pathOut, root, false, found);
+                            Task<Tree> tchild = DFSNOTALL(file, Target, pathOut, root, false, found, graph);
+                            Tree child = await tchild;
                             root.AddChild(child);
+                            Color(child, graph);
+                            await Task.Delay(100);
                         }
                     }
                 }
@@ -96,8 +119,11 @@ namespace StiMole
                     {
                         if (!found[0])
                         {
-                            Tree child = DFSNOTALL(folder, Target, pathOut, root, true, found);
+                            Task<Tree> tchild = DFSNOTALL(folder, Target, pathOut, root, true, found, graph);
+                            Tree child = await tchild;
                             root.AddChild(child);
+                            Color(child, graph);
+                            await Task.Delay(100);
                         }
                     }
                 }
@@ -109,7 +135,8 @@ namespace StiMole
                 if (root.FileName == Target)
                 {
                     found[0] = true;
-                    Color(root);
+                    ColorParent(root, graph);
+                    await Task.Delay(100);
                     pathOut.Add(Path);
                 }
                 return root;

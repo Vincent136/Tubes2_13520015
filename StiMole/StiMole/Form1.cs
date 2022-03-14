@@ -72,7 +72,7 @@ namespace StiMole
             }
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private async void button1_Click(object sender, EventArgs e)
         {
             if (openedFile)
             {
@@ -82,24 +82,41 @@ namespace StiMole
                     {
                         string Target = textBox1.Text;
                         List<string> pathOut = new List<string>();
-                        Tree root = BFSAll(Path, Target, pathOut); 
-                        root.resetCounter();
-                        drawTree(root);
-
+                        Graph graph = new Graph("graph");
+                        Task<Tree> root = BFSAll(Path, Target, pathOut, graph);
+                        Tree resetTree = await root;
+                        resetTree.resetCounter();
                     } else
                     {
                         string Target = textBox1.Text;
-                        Graph graph = new Graph("graph");
                         List<string> pathOut = new List<string>();
-                        BFSNOTALL(Path, Target, pathOut, true, graph);
+                        Graph graph = new Graph("graph");
+                        Task<Tree> root = BFSNOTALL(Path, Target, pathOut, true, graph);
+                        Tree resetTree = await root;
+                        resetTree.resetCounter();
                     }
                 } else
                 {
-                    string Target = textBox1.Text;
-                    List<string> pathOut = new List<string>();
-                    Tree root = DFS.Search(Path, Target, pathOut, checkBox1.Checked);
-                    root.resetCounter();
-                    drawTree(root);
+                    if (checkBox1.Checked)
+                    {
+                        string Target = textBox1.Text;
+                        List<string> pathOut = new List<string>();
+                        Graph graph = new Graph("graph");
+                        Task<Tree> root = DFSall(Path, Target, pathOut, null, true, graph);
+                        Tree resetTree = await root;
+                        resetTree.resetCounter();
+                    }
+                    else
+                    {
+                        string Target = textBox1.Text;
+                        List<string> pathOut = new List<string>();
+                        Graph graph = new Graph("graph");
+                        List<bool> found = new List<bool>();
+                        found.Add(false);
+                        Task<Tree> root = DFSNOTALL(Path, Target, pathOut, null, true, found, graph);
+                        Tree resetTree = await root;
+                        resetTree.resetCounter();
+                    }
                 }
             }
         }
