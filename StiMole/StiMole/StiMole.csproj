@@ -70,7 +70,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="BFS.cs" />
+    <Compile Include="BFS.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="DFS.cs" />
     <Compile Include="MTree.cs" />
     <Compile Include="ReadDirectory.cs" />

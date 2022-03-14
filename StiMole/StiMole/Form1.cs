@@ -76,19 +76,35 @@ namespace StiMole
         {
             if (openedFile)
             {
-                //ini terakhir kali nopal edit buat nyelesain DFS, kalau mau nyoba, tinggal set targetnya sama pilih search all ato ngga
-                string Target = "gay.txt";
-                bool searchAll = false;
-                List<string> pathOut = new List<string>();
-                //Tree root = DFS.Search(Path, Target, pathOut, searchAll);
-                //Tree root = BFS.BFSAll(Path, Target, pathOut); 
-                Tree root = BFS.BFSNOTALL(Path, Target, pathOut, true);
-                root.resetCounter();
-                drawTree(root);
+                if (radioButton1.Checked)
+                {
+                    if (checkBox1.Checked)
+                    {
+                        string Target = textBox1.Text;
+                        List<string> pathOut = new List<string>();
+                        Tree root = BFSAll(Path, Target, pathOut); 
+                        root.resetCounter();
+                        drawTree(root);
+
+                    } else
+                    {
+                        string Target = textBox1.Text;
+                        Graph graph = new Graph("graph");
+                        List<string> pathOut = new List<string>();
+                        BFSNOTALL(Path, Target, pathOut, true, graph);
+                    }
+                } else
+                {
+                    string Target = textBox1.Text;
+                    List<string> pathOut = new List<string>();
+                    Tree root = DFS.Search(Path, Target, pathOut, checkBox1.Checked);
+                    root.resetCounter();
+                    drawTree(root);
+                }
             }
         }
 
-        private void drawTree(Tree root)
+        private async void drawTree(Tree root)
         {
             Graph graph = new Graph("graph");
             if (root.children != null)
@@ -99,19 +115,22 @@ namespace StiMole
                     if (child.warna == Warna.Merah)
                     {
                         graph.AddEdge(root.id.ToString() + "\n" + root.FileName, child.id.ToString() + "\n" + child.FileName).Attr.Color = Microsoft.Msagl.Drawing.Color.Red;
-                    } else if (child.warna == Warna.Hitam)
+                    }
+                    else if (child.warna == Warna.Hitam)
                     {
                         graph.AddEdge(root.id.ToString() + "\n" + root.FileName, child.id.ToString() + "\n" + child.FileName).Attr.Color = Microsoft.Msagl.Drawing.Color.Black;
-                    } else if (child.warna == Warna.Biru)
+                    }
+                    else if (child.warna == Warna.Biru)
                     {
                         graph.AddEdge(root.id.ToString() + "\n" + root.FileName, child.id.ToString() + "\n" + child.FileName).Attr.Color = Microsoft.Msagl.Drawing.Color.Blue;
                     }
+                    gViewer1.Graph = graph;
+                    await Task.Delay(3000);
                 }
             }
-            gViewer1.Graph = graph;
         }
 
-        private void drawTree(Tree root, Graph graph)
+        private async void drawTree(Tree root, Graph graph)
         {
             if (root.children != null)
             {
@@ -130,8 +149,11 @@ namespace StiMole
                     {
                         graph.AddEdge(root.id.ToString() + "\n" + root.FileName, child.id.ToString() + "\n" + child.FileName).Attr.Color = Microsoft.Msagl.Drawing.Color.Blue;
                     }
+                    gViewer1.Graph = graph;
+                    await Task.Delay(3000);
                 }
             }  
         }
+
     }
 }
