@@ -59,6 +59,7 @@
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.DirectoryServices" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -70,8 +71,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="BFS.cs" />
-    <Compile Include="DFS.cs" />
+    <Compile Include="BFS.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DFS.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="MTree.cs" />
     <Compile Include="ReadDirectory.cs" />
     <Compile Include="Tree.cs" />

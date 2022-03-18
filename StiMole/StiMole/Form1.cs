@@ -47,6 +47,7 @@ namespace StiMole
         private void button2_Click(object sender, EventArgs e)
         {
             CommonOpenFileDialog dialog = new CommonOpenFileDialog();
+            dialog.InitialDirectory = "c:\\";
             dialog.IsFolderPicker = true;
             if (dialog.ShowDialog() == CommonFileDialogResult.Ok)
             {
@@ -72,66 +73,63 @@ namespace StiMole
             }
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private async void button1_Click(object sender, EventArgs e)
         {
             if (openedFile)
             {
-                //ini terakhir kali nopal edit buat nyelesain DFS, kalau mau nyoba, tinggal set targetnya sama pilih search all ato ngga
-                string Target = "gay.txt";
-                bool searchAll = false;
-                List<string> pathOut = new List<string>();
-                //Tree root = DFS.Search(Path, Target, pathOut, searchAll);
-                //Tree root = BFS.BFSAll(Path, Target, pathOut); 
-                Tree root = BFS.BFSNOTALL(Path, Target, pathOut, true);
-                root.resetCounter();
-                drawTree(root);
-            }
-        }
-
-        private void drawTree(Tree root)
-        {
-            Graph graph = new Graph("graph");
-            if (root.children != null)
-            {
-                foreach (Tree child in root.children)
+                if (radioButton1.Checked)
                 {
-                    drawTree(child, graph);
-                    if (child.warna == Warna.Merah)
+                    if (checkBox1.Checked)
                     {
-                        graph.AddEdge(root.id.ToString() + "\n" + root.FileName, child.id.ToString() + "\n" + child.FileName).Attr.Color = Microsoft.Msagl.Drawing.Color.Red;
-                    } else if (child.warna == Warna.Hitam)
+                        string Target = textBox1.Text;
+                        List<string> pathOut = new List<string>();
+                        Graph graph = new Graph("graph");
+                        Task<Tree> root = BFSAll(Path, Target, pathOut, graph);
+                        Tree resetTree = await root;
+                        resetTree.resetCounter();
+                    } else
                     {
-                        graph.AddEdge(root.id.ToString() + "\n" + root.FileName, child.id.ToString() + "\n" + child.FileName).Attr.Color = Microsoft.Msagl.Drawing.Color.Black;
-                    } else if (child.warna == Warna.Biru)
+                        string Target = textBox1.Text;
+                        List<string> pathOut = new List<string>();
+                        Graph graph = new Graph("graph");
+                        Task<Tree> root = BFSNOTALL(Path, Target, pathOut, true, graph);
+                        Tree resetTree = await root;
+                        linkLabel1.Text = pathOut[0];
+                        resetTree.resetCounter();
+                    }
+                } else
+                {
+                    if (checkBox1.Checked)
                     {
-                        graph.AddEdge(root.id.ToString() + "\n" + root.FileName, child.id.ToString() + "\n" + child.FileName).Attr.Color = Microsoft.Msagl.Drawing.Color.Blue;
+                        string Target = textBox1.Text;
+                        List<string> pathOut = new List<string>();
+                        Graph graph = new Graph("graph");
+                        Task<Tree> root = DFSall(Path, Target, pathOut, null, true, graph);
+                        Tree resetTree = await root;
+                        resetTree.resetCounter();
+                    }
+                    else
+                    {
+                        string Target = textBox1.Text;
+                        List<string> pathOut = new List<string>();
+                        Graph graph = new Graph("graph");
+                        List<bool> found = new List<bool>();
+                        found.Add(false);
+                        Task<Tree> root = DFSNOTALL(Path, Target, pathOut, null, true, found, graph);
+                        Tree resetTree = await root;
+                        linkLabel1.Text = pathOut[0];
+                        resetTree.resetCounter();
                     }
                 }
             }
-            gViewer1.Graph = graph;
         }
 
-        private void drawTree(Tree root, Graph graph)
+        private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            if (root.children != null)
-            {
-                foreach (Tree child in root.children)
-                { 
-                    drawTree(child, graph);
-                    if (child.warna == Warna.Merah)
-                    {
-                        graph.AddEdge(root.id.ToString() + "\n" + root.FileName, child.id.ToString() + "\n" + child.FileName).Attr.Color = Microsoft.Msagl.Drawing.Color.Red;
-                    }
-                    else if (child.warna == Warna.Hitam)
-                    {
-                        graph.AddEdge(root.id.ToString() + "\n" + root.FileName, child.id.ToString() + "\n" + child.FileName).Attr.Color = Microsoft.Msagl.Drawing.Color.Black;
-                    }
-                    else if (child.warna == Warna.Biru)
-                    {
-                        graph.AddEdge(root.id.ToString() + "\n" + root.FileName, child.id.ToString() + "\n" + child.FileName).Attr.Color = Microsoft.Msagl.Drawing.Color.Blue;
-                    }
-                }
-            }  
+            LinkLabel label = sender as LinkLabel;
+            CommonOpenFileDialog dialog = new CommonOpenFileDialog();
+            dialog.InitialDirectory = label.Text;
+            dialog.ShowDialog();
         }
     }
 }
