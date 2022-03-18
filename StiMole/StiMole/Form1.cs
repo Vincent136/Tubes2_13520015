@@ -124,57 +124,6 @@ namespace StiMole
             }
         }
 
-        private async void drawTree(Tree root)
-        {
-            Graph graph = new Graph("graph");
-            if (root.children != null)
-            {
-                foreach (Tree child in root.children)
-                {
-                    drawTree(child, graph);
-                    if (child.warna == Warna.Merah)
-                    {
-                        graph.AddEdge(root.id.ToString() + "\n" + root.FileName, child.id.ToString() + "\n" + child.FileName).Attr.Color = Microsoft.Msagl.Drawing.Color.Red;
-                    }
-                    else if (child.warna == Warna.Hitam)
-                    {
-                        graph.AddEdge(root.id.ToString() + "\n" + root.FileName, child.id.ToString() + "\n" + child.FileName).Attr.Color = Microsoft.Msagl.Drawing.Color.Black;
-                    }
-                    else if (child.warna == Warna.Biru)
-                    {
-                        graph.AddEdge(root.id.ToString() + "\n" + root.FileName, child.id.ToString() + "\n" + child.FileName).Attr.Color = Microsoft.Msagl.Drawing.Color.Blue;
-                    }
-                    gViewer1.Graph = graph;
-                    await Task.Delay(3000);
-                }
-            }
-        }
-
-        private async void drawTree(Tree root, Graph graph)
-        {
-            if (root.children != null)
-            {
-                foreach (Tree child in root.children)
-                { 
-                    drawTree(child, graph);
-                    if (child.warna == Warna.Merah)
-                    {
-                        graph.AddEdge(root.id.ToString() + "\n" + root.FileName, child.id.ToString() + "\n" + child.FileName).Attr.Color = Microsoft.Msagl.Drawing.Color.Red;
-                    }
-                    else if (child.warna == Warna.Hitam)
-                    {
-                        graph.AddEdge(root.id.ToString() + "\n" + root.FileName, child.id.ToString() + "\n" + child.FileName).Attr.Color = Microsoft.Msagl.Drawing.Color.Black;
-                    }
-                    else if (child.warna == Warna.Biru)
-                    {
-                        graph.AddEdge(root.id.ToString() + "\n" + root.FileName, child.id.ToString() + "\n" + child.FileName).Attr.Color = Microsoft.Msagl.Drawing.Color.Blue;
-                    }
-                    gViewer1.Graph = graph;
-                    await Task.Delay(3000);
-                }
-            }  
-        }
-
         private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
             LinkLabel label = sender as LinkLabel;
