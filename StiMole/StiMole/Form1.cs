@@ -47,6 +47,7 @@ namespace StiMole
         private void button2_Click(object sender, EventArgs e)
         {
             CommonOpenFileDialog dialog = new CommonOpenFileDialog();
+            dialog.InitialDirectory = "c:\\";
             dialog.IsFolderPicker = true;
             if (dialog.ShowDialog() == CommonFileDialogResult.Ok)
             {
@@ -93,6 +94,7 @@ namespace StiMole
                         Graph graph = new Graph("graph");
                         Task<Tree> root = BFSNOTALL(Path, Target, pathOut, true, graph);
                         Tree resetTree = await root;
+                        linkLabel1.Text = pathOut[0];
                         resetTree.resetCounter();
                     }
                 } else
@@ -115,6 +117,7 @@ namespace StiMole
                         found.Add(false);
                         Task<Tree> root = DFSNOTALL(Path, Target, pathOut, null, true, found, graph);
                         Tree resetTree = await root;
+                        linkLabel1.Text = pathOut[0];
                         resetTree.resetCounter();
                     }
                 }
@@ -172,5 +175,12 @@ namespace StiMole
             }  
         }
 
+        private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            LinkLabel label = sender as LinkLabel;
+            CommonOpenFileDialog dialog = new CommonOpenFileDialog();
+            dialog.InitialDirectory = label.Text;
+            dialog.ShowDialog();
+        }
     }
 }

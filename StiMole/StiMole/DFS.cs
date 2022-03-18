@@ -132,6 +132,11 @@ namespace StiMole
             else
             {
                 Tree root = new Tree(Path, parent, Warna.Merah);
+                if (root.parent != null)
+                {
+                    Color(root, graph);
+                    await Task.Delay(100);
+                }
                 if (root.FileName == Target)
                 {
                     found[0] = true;
