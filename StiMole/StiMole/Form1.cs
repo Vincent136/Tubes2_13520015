@@ -1,14 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
-using System.Windows;
 using System.Windows.Forms;
-using System.IO;
+using System.Diagnostics;
 using Microsoft.WindowsAPICodePack.Dialogs;
 using Microsoft.Msagl.Drawing;
 
@@ -86,6 +80,7 @@ namespace StiMole
                         Graph graph = new Graph("graph");
                         Task<Tree> root = BFSAll(Path, Target, pathOut, graph);
                         Tree resetTree = await root;
+                        add_dynamic_link(pathOut);
                         resetTree.resetCounter();
                     } else
                     {
@@ -94,7 +89,7 @@ namespace StiMole
                         Graph graph = new Graph("graph");
                         Task<Tree> root = BFSNOTALL(Path, Target, pathOut, true, graph);
                         Tree resetTree = await root;
-                        linkLabel1.Text = pathOut[0];
+                        add_dynamic_link(pathOut);
                         resetTree.resetCounter();
                     }
                 } else
@@ -106,6 +101,7 @@ namespace StiMole
                         Graph graph = new Graph("graph");
                         Task<Tree> root = DFSall(Path, Target, pathOut, null, true, graph);
                         Tree resetTree = await root;
+                        add_dynamic_link(pathOut);
                         resetTree.resetCounter();
                     }
                     else
@@ -117,19 +113,30 @@ namespace StiMole
                         found.Add(false);
                         Task<Tree> root = DFSNOTALL(Path, Target, pathOut, null, true, found, graph);
                         Tree resetTree = await root;
-                        linkLabel1.Text = pathOut[0];
+                        add_dynamic_link(pathOut);
                         resetTree.resetCounter();
                     }
                 }
             }
         }
 
-        private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        private void add_dynamic_link(List<string> pathOut)
+        {
+
+            for (int i = 0; i < pathOut.Count; i++)
+            {
+                LinkLabel label = new LinkLabel();
+                label.Text = pathOut[i];
+                label.Click += new EventHandler(DynamicLink_Click);
+                label.Dock = DockStyle.Top;
+                panel7.Controls.Add(label);    
+            }
+        }
+
+        private void DynamicLink_Click(object sender, EventArgs e)
         {
             LinkLabel label = sender as LinkLabel;
-            CommonOpenFileDialog dialog = new CommonOpenFileDialog();
-            dialog.InitialDirectory = label.Text;
-            dialog.ShowDialog();
+            Process.Start("explorer.exe",(string)label.Text);
         }
     }
 }
