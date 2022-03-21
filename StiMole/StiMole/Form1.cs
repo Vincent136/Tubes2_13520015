@@ -78,7 +78,7 @@ namespace StiMole
                         string Target = textBox1.Text;
                         List<string> pathOut = new List<string>();
                         Graph graph = new Graph("graph");
-                        Task<Tree> root = BFSAll(Path, Target, pathOut, graph);
+                        Task<Tree> root = BFSAll(Path, Target,pathOut,true , graph);
                         Tree resetTree = await root;
                         add_dynamic_link(pathOut);
                         resetTree.resetCounter();
