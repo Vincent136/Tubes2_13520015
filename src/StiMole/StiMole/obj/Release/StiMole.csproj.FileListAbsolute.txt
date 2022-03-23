@@ -1,0 +1,15 @@
+D:\ProjectKuliah\Stima\Tubes2\Tubes2_13520015\bin\StiMole.exe.config
+D:\ProjectKuliah\Stima\Tubes2\Tubes2_13520015\bin\StiMole.exe
+D:\ProjectKuliah\Stima\Tubes2\Tubes2_13520015\bin\StiMole.pdb
+D:\ProjectKuliah\Stima\Tubes2\Tubes2_13520015\src\StiMole\StiMole\obj\Release\StiMole.csproj.AssemblyReference.cache
+D:\ProjectKuliah\Stima\Tubes2\Tubes2_13520015\src\StiMole\StiMole\obj\Release\StiMole.csproj.SuggestedBindingRedirects.cache
+D:\ProjectKuliah\Stima\Tubes2\Tubes2_13520015\src\StiMole\StiMole\obj\Release\StiMole.Form1.resources
+D:\ProjectKuliah\Stima\Tubes2\Tubes2_13520015\src\StiMole\StiMole\obj\Release\StiMole.Properties.Resources.resources
+D:\ProjectKuliah\Stima\Tubes2\Tubes2_13520015\src\StiMole\StiMole\obj\Release\StiMole.csproj.GenerateResource.cache
+D:\ProjectKuliah\Stima\Tubes2\Tubes2_13520015\src\StiMole\StiMole\obj\Release\StiMole.csproj.CoreCompileInputs.cache
+D:\ProjectKuliah\Stima\Tubes2\Tubes2_13520015\src\StiMole\StiMole\obj\Release\StiMole.csproj.CopyComplete
+D:\ProjectKuliah\Stima\Tubes2\Tubes2_13520015\src\StiMole\StiMole\obj\Release\StiMole.exe
+D:\ProjectKuliah\Stima\Tubes2\Tubes2_13520015\src\StiMole\StiMole\obj\Release\StiMole.pdb
+D:\bin\StiMole.exe.config
+D:\bin\StiMole.exe
+D:\bin\StiMole.pdb
