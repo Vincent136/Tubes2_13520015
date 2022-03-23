@@ -9,8 +9,7 @@ Aplikasi Breadth First Search(BFS) dan Depth First Search(DFS) untuk mencari fil
 # How To
 
 
-# US
-+ Kelompok 54
+# US: Kelompok 54
 - Jaya Mangalo Soegeng Rahardjo 13520015
 - Muhammad Naufal Satriandana 13520064
 - Vincent Christian Siregar 13520136
