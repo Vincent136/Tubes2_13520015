@@ -68,17 +68,19 @@ namespace StiMole
         }
 
         private async void button1_Click(object sender, EventArgs e)
-        {
+        {   
             if (openedFile)
-            {
+            {   
+                int interval = Decimal.ToInt32(numericUpDown1.Value);
                 if (radioButton1.Checked)
-                {
+                {   
+                    
                     if (checkBox1.Checked)
                     {
                         string Target = textBox1.Text;
                         List<string> pathOut = new List<string>();
                         Graph graph = new Graph("graph");
-                        Task<Tree> root = BFSAll(Path, Target,pathOut,true , graph);
+                        Task<Tree> root = BFSAll(Path, Target,pathOut,true , graph,interval);
                         Tree resetTree = await root;
                         add_dynamic_link(pathOut);
                         resetTree.resetCounter();
@@ -87,19 +89,20 @@ namespace StiMole
                         string Target = textBox1.Text;
                         List<string> pathOut = new List<string>();
                         Graph graph = new Graph("graph");
-                        Task<Tree> root = BFSNOTALL(Path, Target, pathOut, true, graph);
+                        Task<Tree> root = BFSNOTALL(Path, Target, pathOut, true, graph,interval);
                         Tree resetTree = await root;
                         add_dynamic_link(pathOut);
                         resetTree.resetCounter();
                     }
                 } else
                 {
+                        
                     if (checkBox1.Checked)
-                    {
+                    {   
                         string Target = textBox1.Text;
                         List<string> pathOut = new List<string>();
                         Graph graph = new Graph("graph");
-                        Task<Tree> root = DFSall(Path, Target, pathOut, null, true, graph);
+                        Task<Tree> root = DFSall(Path, Target, pathOut, null, true, graph,interval);
                         Tree resetTree = await root;
                         add_dynamic_link(pathOut);
                         resetTree.resetCounter();
@@ -111,7 +114,7 @@ namespace StiMole
                         Graph graph = new Graph("graph");
                         List<bool> found = new List<bool>();
                         found.Add(false);
-                        Task<Tree> root = DFSNOTALL(Path, Target, pathOut, null, true, found, graph);
+                        Task<Tree> root = DFSNOTALL(Path, Target, pathOut, null, true, found, graph,interval);
                         Tree resetTree = await root;
                         add_dynamic_link(pathOut);
                         resetTree.resetCounter();

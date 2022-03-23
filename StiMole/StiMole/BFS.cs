@@ -17,7 +17,7 @@ namespace StiMole
 {
     public partial class Form1 : Form
     {   
-        private async Task<Tree> BFSAll(string path,string Target, List<string> pathOut,bool isFolder ,Graph graph)
+        private async Task<Tree> BFSAll(string path,string Target, List<string> pathOut,bool isFolder ,Graph graph,int interval)
         {   
             Tree root = new Tree(path);
             if(isFolder){ 
@@ -33,7 +33,7 @@ namespace StiMole
                         Current.Found();
                         pathOut.Add(Current.Path); //Temp
                         ColorParent(Current, graph);
-                        await Task.Delay(100);
+                        await Task.Delay(interval);
                     }
                     else
                     {
@@ -41,7 +41,7 @@ namespace StiMole
                         if (Current.parent != null)
                         {
                             Color(Current, graph);
-                            await Task.Delay(100);
+                            await Task.Delay(interval);
                         }
                     }
 
@@ -55,7 +55,7 @@ namespace StiMole
                             Tree child = new Tree(file);
                             Current.AddChild(child);
                             Color(child, graph);
-                            await Task.Delay(100);
+                            await Task.Delay(interval);
                             queue.Enqueue(child);
                         }
                     }
@@ -66,7 +66,7 @@ namespace StiMole
                             Tree child = new Tree(folder);  
                             Current.AddChild(child);
                             Color(child, graph);
-                            await Task.Delay(100);
+                            await Task.Delay(interval);
                             queue.Enqueue(child);
                         }
                     }
@@ -78,7 +78,7 @@ namespace StiMole
 
 
 
-        private async Task<Tree> BFSNOTALL(string path,string Target, List<string> pathOut,bool isFolder, Graph graph)
+        private async Task<Tree> BFSNOTALL(string path,string Target, List<string> pathOut,bool isFolder, Graph graph,int interval)
         {   
             Tree root = new Tree(path);
             if(isFolder){ 
@@ -94,7 +94,7 @@ namespace StiMole
                         Current.Found();
                         pathOut.Add(Current.Path); //Temp
                         ColorParent(Current, graph);
-                        await Task.Delay(100);
+                        await Task.Delay(interval);
                         return root;
                     }
                     else
@@ -103,7 +103,7 @@ namespace StiMole
                         if (Current.parent != null)
                         {
                             Color(Current, graph);
-                            await Task.Delay(100);
+                            await Task.Delay(interval);
                         }
                     }
 
@@ -117,7 +117,7 @@ namespace StiMole
                             Tree child = new Tree(file);
                             Current.AddChild(child);
                             Color(child, graph);
-                            await Task.Delay(100);
+                            await Task.Delay(interval);
                             queue.Enqueue(child);
                         }
                     }
@@ -128,7 +128,7 @@ namespace StiMole
                             Tree child = new Tree(folder);  
                             Current.AddChild(child);
                             Color(child, graph);
-                            await Task.Delay(100);
+                            await Task.Delay(interval);
                             queue.Enqueue(child);
                         }
                     }
