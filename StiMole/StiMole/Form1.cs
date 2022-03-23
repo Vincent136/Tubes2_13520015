@@ -70,7 +70,8 @@ namespace StiMole
         private async void button1_Click(object sender, EventArgs e)
         {   
             if (openedFile)
-            {   
+            {
+                panel7.Controls.Clear();
                 int interval = Decimal.ToInt32(numericUpDown1.Value);
                 if (radioButton1.Checked)
                 {   

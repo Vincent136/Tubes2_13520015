@@ -32,6 +32,8 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.panel1 = new System.Windows.Forms.Panel();
+            this.label13 = new System.Windows.Forms.Label();
+            this.label12 = new System.Windows.Forms.Label();
             this.numericUpDown1 = new System.Windows.Forms.NumericUpDown();
             this.panel2 = new System.Windows.Forms.Panel();
             this.label10 = new System.Windows.Forms.Label();
@@ -59,8 +61,6 @@
             this.label11 = new System.Windows.Forms.Label();
             this.directoryEntry1 = new System.DirectoryServices.DirectoryEntry();
             this.panel4 = new System.Windows.Forms.Panel();
-            this.label12 = new System.Windows.Forms.Label();
-            this.label13 = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
             this.panel3.SuspendLayout();
@@ -99,6 +99,30 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(285, 906);
             this.panel1.TabIndex = 2;
+            // 
+            // label13
+            // 
+            this.label13.AutoSize = true;
+            this.label13.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(218)))), ((int)(((byte)(219)))), ((int)(((byte)(189)))));
+            this.label13.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
+            this.label13.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(216)))), ((int)(((byte)(33)))), ((int)(((byte)(72)))));
+            this.label13.Location = new System.Drawing.Point(171, 600);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(79, 17);
+            this.label13.TabIndex = 17;
+            this.label13.Text = "mili-second";
+            // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(218)))), ((int)(((byte)(219)))), ((int)(((byte)(189)))));
+            this.label12.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
+            this.label12.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(216)))), ((int)(((byte)(33)))), ((int)(((byte)(72)))));
+            this.label12.Location = new System.Drawing.Point(38, 599);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(58, 17);
+            this.label12.TabIndex = 16;
+            this.label12.Text = "Interval:";
             // 
             // numericUpDown1
             // 
@@ -422,30 +446,6 @@
             this.panel4.Name = "panel4";
             this.panel4.Size = new System.Drawing.Size(643, 34);
             this.panel4.TabIndex = 8;
-            // 
-            // label12
-            // 
-            this.label12.AutoSize = true;
-            this.label12.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(218)))), ((int)(((byte)(219)))), ((int)(((byte)(189)))));
-            this.label12.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            this.label12.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(216)))), ((int)(((byte)(33)))), ((int)(((byte)(72)))));
-            this.label12.Location = new System.Drawing.Point(38, 599);
-            this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(58, 17);
-            this.label12.TabIndex = 16;
-            this.label12.Text = "Interval:";
-            // 
-            // label13
-            // 
-            this.label13.AutoSize = true;
-            this.label13.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(218)))), ((int)(((byte)(219)))), ((int)(((byte)(189)))));
-            this.label13.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            this.label13.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(216)))), ((int)(((byte)(33)))), ((int)(((byte)(72)))));
-            this.label13.Location = new System.Drawing.Point(171, 600);
-            this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(79, 17);
-            this.label13.TabIndex = 17;
-            this.label13.Text = "mili-second";
             // 
             // Form1
             // 
